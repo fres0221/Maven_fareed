@@ -1,26 +1,25 @@
 node('Dev') 
 {
-    stage('continuousdownload_master') 
+    stage('continuousdownload_ master') 
     {
-       git 'https://github.com/fres0221/maven-fres.git'
+       git 'https://github.com/fres0221/Maven_fareed.git'
     }
-    stage('continuousbuild_master') 
+    stage('continuousbuild_ master') 
     {
        sh 'mvn package'
     }
-    stage('continuousdeployment_master') 
+    stage('continuousdeployment_ master') 
     {
        sh 'scp /home/ubuntu/.jenkins/workspace/Multipipeline-2/webapp/target/webapp.war ubuntu@172.31.80.110:/var/lib/tomcat8/webapps/testing.war'
     }
-    stage('continuoustesting_master') 
+    stage('continuoustesting_ master') 
     {
        git 'https://github.com/fres0221/functionaltesting_212.git'
        sh 'java -jar /home/ubuntu/.jenkins/workspace/Multipipeline-2/testing.jar'
     }
-    stage('continuousdelivery_master') 
+    stage('continuousdelivery_ master') 
     {
        sh 'scp /home/ubuntu/.jenkins/workspace/Multipipeline-2/webapp/target/webapp.war ubuntu@172.31.85.10:/var/lib/tomcat8/webapps/prod.war'
     }
-   
     
 }
