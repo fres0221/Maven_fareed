@@ -10,16 +10,16 @@ node('Dev')
     }
     stage('continuousdeployment_ loans') 
     {
-       sh 'scp /home/ubuntu/.jenkins/workspace/Multipipeline-2/webapp/target/webapp.war ubuntu@172.31.80.110:/var/lib/tomcat8/webapps/testing.war'
+       sh 'scp /home/ubuntu/.jenkins/workspace/Multipipeline-2_loans/webapp/target/webapp.war ubuntu@172.31.80.110:/var/lib/tomcat8/webapps/testing.war'
     }
     stage('continuoustesting_ loans') 
     {
        git 'https://github.com/fres0221/functionaltesting_212.git'
-       sh 'java -jar /home/ubuntu/.jenkins/workspace/Multipipeline-2/testing.jar'
+       sh 'java -jar /home/ubuntu/.jenkins/workspace/Multipipeline-2_loans/testing.jar'
     }
     stage('continuousdelivery_ loans') 
     {
-       sh 'scp /home/ubuntu/.jenkins/workspace/Multipipeline-2/webapp/target/webapp.war ubuntu@172.31.85.10:/var/lib/tomcat8/webapps/prod.war'
+       sh 'scp /home/ubuntu/.jenkins/workspace/Multipipeline-2_loans/webapp/target/webapp.war ubuntu@172.31.85.10:/var/lib/tomcat8/webapps/prod.war'
     }
     
 }
